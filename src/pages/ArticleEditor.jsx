@@ -108,11 +108,30 @@ export default function ArticleEditor() {
 
   return (
     <section className="max-w-2xl px-6 sm:px-10 py-10 sm:py-14">
-      <h1 className="text-2xl font-bold tracking-tight">
-        {isEditing ? 'Edit article' : 'New article'}
-      </h1>
+      <div className="sticky top-0 z-20 -mx-6 sm:-mx-10 flex items-center justify-between gap-4 border-b border-neutral-100 bg-white/95 px-6 py-4 backdrop-blur sm:-mt-10 sm:px-10 sm:py-5 dark:border-neutral-800 dark:bg-neutral-950/95">
+        <h1 className="text-2xl font-bold tracking-tight">
+          {isEditing ? 'Edit article' : 'New article'}
+        </h1>
+        <div className="flex items-center gap-3">
+          <button
+            type="submit"
+            form="article-form"
+            disabled={saving}
+            className="rounded-md bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
+          >
+            {saving ? 'Saving…' : 'Save'}
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate('/admin')}
+            className="rounded-md border border-neutral-200 dark:border-neutral-700 px-5 py-2.5 text-sm font-medium hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
 
-      <form onSubmit={handleSave} className="mt-8 space-y-6">
+      <form id="article-form" onSubmit={handleSave} className="mt-8 space-y-6">
         <div>
           <label className={labelClass}>Title</label>
           <input
@@ -172,23 +191,6 @@ export default function ArticleEditor() {
         </label>
 
         {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
-
-        <div className="flex items-center gap-3">
-          <button
-            type="submit"
-            disabled={saving}
-            className="rounded-md bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900 px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
-          >
-            {saving ? 'Saving…' : 'Save'}
-          </button>
-          <button
-            type="button"
-            onClick={() => navigate('/admin')}
-            className="rounded-md border border-neutral-200 dark:border-neutral-700 px-5 py-2.5 text-sm font-medium hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors"
-          >
-            Cancel
-          </button>
-        </div>
       </form>
     </section>
   );

@@ -66,7 +66,7 @@ export default function Layout() {
   }, [collapsed]);
 
   return (
-    <div className="min-h-full lg:flex lg:flex-row">
+    <div className="min-h-screen lg:flex lg:flex-row">
       {/* Left sidebar — ALWAYS a fixed 364px box (no width animation at all).
           Centered on home purely via a transform: translateX, and pinned to
           the left (translate-x-0, its natural static position) on every
@@ -159,7 +159,7 @@ export default function Layout() {
           consider capping it or centering. Not urgent. */}
       <main
         style={{ transitionDuration: `${CONTENT_SLIDE_MS}ms` }}
-        className={`flex-1 overflow-hidden transition-[opacity_transform] ease-out ${
+        className={`flex-1 overflow-x-hidden transition-[opacity_transform] ease-out ${
           // Mobile: home has no separate content column at all (sidebar takes
           // the full screen), so it's safe to fully remove it from layout.
           // Desktop: never use `display:none` here — toggling display kills
