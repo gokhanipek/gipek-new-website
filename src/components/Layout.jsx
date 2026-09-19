@@ -116,9 +116,9 @@ export default function Layout() {
             <NavLink to="/games" className={navLinkClass}>
               Games
             </NavLink>
-            <NavLink to="/projects" className={navLinkClass}>
+            {/* <NavLink to="/projects" className={navLinkClass}>
               Projects
-            </NavLink>
+            </NavLink> */}
             {user && (
               <NavLink to="/admin" className={navLinkClass}>
                 Admin
