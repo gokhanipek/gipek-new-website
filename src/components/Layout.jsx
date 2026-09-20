@@ -66,18 +66,21 @@ export default function Layout() {
   }, [collapsed]);
 
   return (
-    <div className="min-h-screen lg:flex lg:flex-row">
+    <div className="min-h-screen overflow-x-hidden lg:flex lg:flex-row">
       {/* Left sidebar — ALWAYS a fixed 364px box (no width animation at all).
           Centered on home purely via a transform: translateX, and pinned to
           the left (translate-x-0, its natural static position) on every
           other route. Transform-only animation avoids layout thrash and the
           "jump" that width/margin transitions caused. */}
       <aside
-        style={{
-          transitionDuration: `${SLIDE_MS}ms`,
-          transform: collapsed ? 'translateX(calc(50vw - 182px))' : undefined,
-        }}
+        style={{ transitionDuration: `${SLIDE_MS}ms` }}
         className={`lg:min-h-screen lg:sticky lg:top-0 lg:w-[364px] lg:flex-none flex flex-col transition-transform ease-in-out px-6 sm:px-8 py-10 ${
+          // Center the fixed 364px sidebar on the home route — desktop only.
+          // On mobile the sidebar is full-width, so a translateX would shove
+          // it off-screen and create a horizontal scrollbar. Gating it behind
+          // `lg:` keeps the mobile layout flush with the viewport.
+          collapsed ? 'lg:translate-x-[calc(50vw-182px)]' : ''
+        } ${
           collapsed ? 'lg:border-r-0' : 'lg:border-r border-neutral-100 dark:border-neutral-800'
         }`}
       >

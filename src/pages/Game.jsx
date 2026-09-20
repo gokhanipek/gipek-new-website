@@ -146,7 +146,7 @@ export default function Game() {
       {game.embed_url ? (
         <>
           {mode === 'normal' && (
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-6 hidden flex-wrap gap-2 sm:flex">
               <button type="button" onClick={() => setMode('fullsize')} className={btnClass}>
                 ⤢ Fullsize
               </button>
@@ -156,7 +156,32 @@ export default function Game() {
             </div>
           )}
 
-          <div ref={containerRef} className={containerClass}>
+          {/* Mobile-only notice: these games are built for desktop and the
+              embed is removed entirely on small screens. Point players at the
+              standalone game page so they can play it directly (and use the
+              browser's own fullscreen / rotation) instead of the cramped
+              inline embed. */}
+          {mode === 'normal' && (
+            <div className="mt-4 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-300 sm:hidden">
+              <p>This game isn&rsquo;t optimized for mobile devices and may not play well here.</p>
+              <a
+                href={game.embed_url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-flex items-center gap-1 font-medium underline underline-offset-2"
+              >
+                Open the game in its own page →
+              </a>
+            </div>
+          )}
+
+          {/* Game embed. Hidden on mobile in normal mode (the alert above
+              replaces it). Fullsize/fullscreen are desktop-only triggers, so
+              those modes never occur on mobile. */}
+          <div
+            ref={containerRef}
+            className={`${containerClass}${mode === 'normal' ? ' hidden sm:block' : ''}`}
+          >
             {/* Exit button overlays the game in fullsize/fullscreen modes. */}
             {mode !== 'normal' && (
               <button

@@ -15,6 +15,9 @@
 # misc
 .DS_Store
 
+# supabase (schema / seed SQL)
+/supabase
+
 # env files (contain project config; keep out of git)
 .env
 .env.local
