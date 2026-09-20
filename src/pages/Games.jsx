@@ -43,7 +43,7 @@ export default function Games() {
               <img
                 src={game.thumbnail_url}
                 alt=""
-                className="w-full aspect-video object-cover rounded-lg border border-neutral-100 dark:border-neutral-800"
+                className="w-full aspect-video object-contain rounded-lg border border-neutral-100 dark:border-neutral-800"
               />
             )}
             <h2 className="mt-3 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
