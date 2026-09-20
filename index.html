@@ -7,11 +7,33 @@
     <meta name="theme-color" content="#ffffff" />
     <meta name="description" content="Gokhan Ipek — Frontend Developer. Articles and games." />
     <title>Gokhan Ipek</title>
-    <script type="module" crossorigin src="/assets/index-C2bzB7g_.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dgl-C5vK.css">
+    <!-- Single Page Apps for GitHub Pages
+         https://github.com/rafgraph/spa-github-pages
+         Restores the real path that 404.html stashed into the query string,
+         so deep links (e.g. /games/some-slug) work when opened directly. -->
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
+    <script type="module" crossorigin src="/assets/index-DYyOYToU.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B7uLPQNU.css">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>
